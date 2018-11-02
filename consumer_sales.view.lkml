@@ -118,7 +118,7 @@ view: consumer_sales {
       field: transaction_type
       value: "Buyback,Sales"
     }
-    value_format_name: usd
+    value_format: "[>=1000000000]0.0,,,\" B\";[>=1000000]0.0,,\" M\";[>=1000]0.0,,\" K\";0"
     drill_fields: []
   }
 
