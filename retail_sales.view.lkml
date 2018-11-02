@@ -176,7 +176,7 @@ view: retail_sales {
   }
 
   dimension: modcode {
-    type: string
+    type: number
     sql: ${TABLE}."MODCODE" ;;
   }
 
@@ -274,8 +274,41 @@ view: retail_sales {
     sql: ${TABLE}."UNIQUEID" ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [bohcontrolname]
+  measure: net_sales {
+    type: sum
+    sql: case when ${discpric} is null then ${price} else ${discpric} - ${incltax} ;;
+    filters: {
+      field: modcode
+      value: "not 1"
+    }
+    drill_fields: []
+  }
+
+  measure: units_sold {
+    type: sum
+    sql: ${quantityunit} ;;
+    filters: {
+      field: modcode
+      value: "not 1"
+    }
+    drill_fields: []
+  }
+
+  measure: avg_unit_price {
+    type: number
+    sql: ${net_sales}/${units_sold} ;;
+    drill_fields: []
+  }
+
+  measure: net_tickets {
+    type: count_distinct
+    sql: concat(${checknumber},${fkstoreid},${systemdate_date}) ;;
+    drill_fields: []
+  }
+
+  measure: units_per_transaction {
+    type: number
+    sql: ${net_sales}/${net_tickets} ;;
+    drill_fields: []
   }
 }
