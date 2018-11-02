@@ -13,7 +13,7 @@ persist_with: dailey_test_default_datagroup
 explore: retail_sales {
   join: date {
     relationship: many_to_one
-    sql: ${retail_sales.dateofbusiness_date} = ${date.calendar_date} ;;
+    sql_on: ${retail_sales.dateofbusiness_date} = ${date.calendar_date} ;;
   }
   group_label: "Retail"
 }
@@ -21,7 +21,7 @@ explore: retail_sales {
 explore: consumer_sales {
   join: date {
     relationship: many_to_one
-    sql: ${consumer_sales.date_sk} = ${date.date_sk} ;;
+    sql_on: ${consumer_sales.date_sk} = ${date.date_sk} ;;
   }
   group_label: "Consumer"
 }
