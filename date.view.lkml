@@ -1,7 +1,7 @@
 view: date {
   sql_table_name: PUBLIC.DIM_DATE ;;
 
-  dimension_group: date {
+  dimension_group: calendar {
     type: time
     timeframes: [
       raw,
