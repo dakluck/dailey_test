@@ -319,7 +319,7 @@ view: retail_sales {
 
   measure: net_sales {
     type: sum
-    sql: case when ${discpric} is null then ${price} else ${discpric} - ${incltax} ;;
+    sql: case when ${discpric} is null then ${price} else ${discpric} end - ${incltax} ;;
     filters: {
       field: modcode
       value: "not 1"
