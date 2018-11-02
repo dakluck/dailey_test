@@ -326,6 +326,7 @@ view: retail_sales {
       field: modcode
       value: "not 1"
     }
+    value_format: "[>=1000000000]$0.0,,,\" B\";[>=1000000]$0.0,,\" M\";[>=1000]$0.0,\" K\";0"
     drill_fields: []
   }
 
@@ -342,6 +343,7 @@ view: retail_sales {
   measure: avg_unit_price {
     type: number
     sql: ${net_sales}/${units_sold} ;;
+    value_format_name: usd
     drill_fields: []
   }
 
