@@ -23,4 +23,5 @@ explore: consumer_sales {
     relationship: many_to_one
     sql: ${consumer_sales.date_sk} = ${date.date_sk} ;;
   }
+  group_label: "Consumer"
 }
