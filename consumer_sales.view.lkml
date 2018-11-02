@@ -118,7 +118,7 @@ view: consumer_sales {
       field: transaction_type
       value: "Buyback,Sales"
     }
-    value_format: "[>=1000000000]0.0,,,\" B\";[>=1000000]0.0,,\" M\";[>=1000]0.0,,\" K\";0"
+    value_format: "[>=1000000000]$0.0,,,\" B\";[>=1000000]$0.0,,\" M\";[>=1000]$0.0,,\" K\";0"
     drill_fields: []
   }
 
@@ -163,13 +163,13 @@ view: consumer_sales {
 
   measure: units_per_store_per_week {
     type: number
-    sql: ${gross_units_less_buybacks}/${distinct_accounts}/${distinct_items}/${date.distinct_weeks};;
+    sql: ${gross_units_less_buybacks}/${distinct_accounts}/${date.distinct_weeks};;
     drill_fields: []
   }
 
   measure: units_per_store_per_sku_per_week {
     type: number
-    sql: ${gross_units_less_buybacks}/${distinct_accounts}/${date.distinct_weeks};;
+    sql: ${gross_units_less_buybacks}/${distinct_accounts}/${distinct_items}/${date.distinct_weeks};;
     drill_fields: []
   }
 }
