@@ -39,6 +39,12 @@ view: date {
     group_label: "Fiscal Date"
   }
 
+  dimension: fiscal_month_name {
+    type: number
+    sql: ${TABLE}."FISCAL_MONTH" ;;
+    group_label: "Fiscal Date"
+  }
+
   dimension: fiscal_quarter {
     type: number
     sql: ${TABLE}."FISCAL_QUARTER" ;;
@@ -49,6 +55,13 @@ view: date {
     type: number
     sql: ${TABLE}."FISCAL_WEEK" ;;
     group_label: "Fiscal Date"
+  }
+
+  dimension: fiscal_week_name {
+    type: number
+    sql: concat("WK ",${TABLE}."FISCAL_WEEK) ;;
+    group_label: "Fiscal Date"
+    order_by_field: fiscal_week
   }
 
   dimension: fiscal_year {
