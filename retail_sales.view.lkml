@@ -311,6 +311,7 @@ view: retail_sales {
     hidden: yes
   }
 
+  #custom dimensions below here
   dimension: uniqueid {
     type: string
     sql: ${TABLE}."UNIQUEID" ;;
@@ -323,9 +324,15 @@ view: retail_sales {
     sql: concat(${checknumber},concat(${fkstoreid},${dateofbusiness_raw})) ;;
   }
 
+  dimension: sales_by_line {
+    type: number
+    sql: case when ${discpric} is null then ${price} else ${discpric} end - ${incltax} ;;
+    drill_fields: []
+  }
+
   measure: net_sales {
     type: sum
-    sql: case when ${discpric} is null then ${price} else ${discpric} end - ${incltax} ;;
+    sql: ${sales_by_line} ;;
     filters: {
       field: modcode
       value: "not 1"
