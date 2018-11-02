@@ -317,6 +317,11 @@ view: retail_sales {
     hidden: yes
   }
 
+  dimension: unique_tickets {
+    type: string
+    sql: concat(${checknumber},concat(${fkstoreid},${dateofbusiness_raw})) ;;
+  }
+
   measure: net_sales {
     type: sum
     sql: case when ${discpric} is null then ${price} else ${discpric} end - ${incltax} ;;
@@ -345,7 +350,7 @@ view: retail_sales {
 
   measure: net_tickets {
     type: count_distinct
-    sql: concat(${checknumber},concat(${fkstoreid},${dateofbusiness_raw})) ;;
+    sql: ${unique_tickets} ;;
     drill_fields: []
   }
 
