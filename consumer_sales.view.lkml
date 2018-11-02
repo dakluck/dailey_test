@@ -152,4 +152,10 @@ view: consumer_sales {
     sql: ${route_id} ;;
     drill_fields: []
   }
+
+  measure: units_per_store_per_week {
+    type: number
+    sql: ${gross_units_less_buybacks}/${distinct_accounts} ;;
+    drill_fields: []
+  }
 }

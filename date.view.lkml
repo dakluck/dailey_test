@@ -29,26 +29,31 @@ view: date {
   dimension: fiscal_day {
     type: string
     sql: ${TABLE}."FISCAL_DAY" ;;
+    group_label: "Fiscal"
   }
 
   dimension: fiscal_month {
     type: string
     sql: ${TABLE}."FISCAL_MONTH" ;;
+    group_label: "Fiscal"
   }
 
   dimension: fiscal_quarter {
     type: string
     sql: ${TABLE}."FISCAL_QUARTER" ;;
+    group_label: "Fiscal"
   }
 
   dimension: fiscal_week {
     type: string
     sql: ${TABLE}."FISCAL_WEEK" ;;
+    group_label: "Fiscal"
   }
 
   dimension: fiscal_year {
     type: string
     sql: ${TABLE}."FISCAL_YEAR" ;;
+    group_label: "Fiscal"
   }
 
   dimension: relative_date {
@@ -61,8 +66,8 @@ view: date {
     sql: ${TABLE}."TO_DATE" ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [day_name]
+  measure: distinct_weeks  {
+    type: count_distinct
+    sql: concat(${fiscal_year},${fiscal_week}) ;;
   }
 }
