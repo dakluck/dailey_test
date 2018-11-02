@@ -118,6 +118,7 @@ view: consumer_sales {
       field: transaction_type
       value: "Buyback,Sales"
     }
+    value_format_name: usd
     drill_fields: []
   }
 
@@ -138,6 +139,7 @@ view: consumer_sales {
       field: transaction_type
       value: "Buyback,Sales"
     }
+    value_format_name: usd
     drill_fields: []
   }
 
