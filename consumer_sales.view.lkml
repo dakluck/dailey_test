@@ -147,6 +147,12 @@ view: consumer_sales {
     drill_fields: []
   }
 
+  measure: distinct_items {
+    type: count_distinct
+    sql: ${item} ;;
+    drill_fields: []
+  }
+
   measure: distinct_routes {
     type: count_distinct
     sql: ${route_id} ;;
@@ -154,6 +160,12 @@ view: consumer_sales {
   }
 
   measure: units_per_store_per_week {
+    type: number
+    sql: ${gross_units_less_buybacks}/${distinct_accounts}/${distinct_items}/${date.distinct_weeks};;
+    drill_fields: []
+  }
+
+  measure: units_per_store_per_sku_per_week {
     type: number
     sql: ${gross_units_less_buybacks}/${distinct_accounts}/${date.distinct_weeks};;
     drill_fields: []
