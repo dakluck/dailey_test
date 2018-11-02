@@ -314,6 +314,7 @@ view: retail_sales {
   dimension: uniqueid {
     type: string
     sql: ${TABLE}."UNIQUEID" ;;
+    primary_key: yes
     hidden: yes
   }
 
