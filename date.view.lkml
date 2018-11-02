@@ -68,6 +68,45 @@ view: date {
     sql: ${TABLE}."RELATIVE_DATE" ;;
   }
 
+  dimension: relative_date_clean {
+    type: string
+    case: {
+      when: {
+        sql: ${relative_date} = 'LY - Year' ;;
+        label: "LY - Year"
+      }
+      when: {
+        sql: ${relative_date} = 'LY - Year;LY - Quarter' ;;
+        label: "LY - Quarter"
+      }
+      when: {
+        sql: ${relative_date} = 'LY - Year;LY - Quarter;LY - Month' ;;
+        label: "LY - Month"
+      }
+      when: {
+        sql: ${relative_date} = 'LY - Year;LY - Quarter;LY - Month;LY - Week' ;;
+        label: "LY - Week"
+      }
+      when: {
+        sql: ${relative_date} = 'TY - Year' ;;
+        label: "TY - Year"
+      }
+      when: {
+        sql: ${relative_date} = 'TY - Year;TY - Quarter;TY - Month' ;;
+        label: "TY - Month"
+      }
+      when: {
+        sql: ${relative_date} = 'TY - Year;TY - Quarter;TY - Month;TY - Week' ;;
+        label: "TY - Week"
+      }
+      when: {
+        sql: ${relative_date} = 'TY - Year;TY - Quarter;TY - Month;TY - Week;TY - Day' ;;
+        label: "TY - Day"
+      }
+      else: "NULL"
+    }
+  }
+
   dimension: to_date {
     type: string
     sql: ${TABLE}."TO_DATE" ;;
