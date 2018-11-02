@@ -31,36 +31,35 @@ view: date {
     sql: ${TABLE}."FISCAL_DAY" ;;
     group_label: "Fiscal Date"
     hidden: yes
+    order_by_field: order_by_date
   }
 
   dimension: fiscal_month {
     type: number
     sql: ${TABLE}."FISCAL_MONTH" ;;
     group_label: "Fiscal Date"
-  }
-
-  dimension: fiscal_month_name {
-    type: number
-    sql: ${TABLE}."FISCAL_MONTH" ;;
-    group_label: "Fiscal Date"
+    order_by_field: order_by_date
   }
 
   dimension: fiscal_quarter {
     type: number
     sql: ${TABLE}."FISCAL_QUARTER" ;;
     group_label: "Fiscal Date"
+    order_by_field: order_by_date
   }
 
   dimension: fiscal_week {
     type: number
     sql: ${TABLE}."FISCAL_WEEK" ;;
     group_label: "Fiscal Date"
+    order_by_field: order_by_date
   }
 
   dimension: fiscal_year {
     type: number
     sql: ${TABLE}."FISCAL_YEAR" ;;
     group_label: "Fiscal Date"
+    order_by_field: order_by_date
   }
 
   dimension: relative_date {
@@ -111,6 +110,12 @@ view: date {
     type: string
     sql: ${TABLE}."TO_DATE" ;;
   }
+
+  dimension: order_by_date {
+    type: number
+    sql: concat(${fiscal_year},${fiscal_month},${fiscal_day});;
+    hidden: yes
+    }
 
   measure: distinct_weeks  {
     type: count_distinct
