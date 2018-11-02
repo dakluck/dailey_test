@@ -10,6 +10,15 @@ datagroup: dailey_test_default_datagroup {
 
 persist_with: dailey_test_default_datagroup
 
+named_value_format: measure_format_number {
+  value_format: "[>=1000000000]0.0,,,\" B\";[>=1000000]0.0,,\" M\";[>=1000]0.0,\" K\";0"
+}
+
+named_value_format: measure_format_currency {
+  value_format: "[>=1000000000]$0.0,,,\" B\";[>=1000000]$0.0,,\" M\";[>=1000]$0.0,\" K\";0"
+}
+
+
 explore: retail_sales {
   join: date {
     relationship: many_to_one

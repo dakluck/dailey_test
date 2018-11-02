@@ -326,8 +326,8 @@ view: retail_sales {
       field: modcode
       value: "not 1"
     }
-    value_format: "[>=1000000000]$0.0,,,\" B\";[>=1000000]$0.0,,\" M\";[>=1000]$0.0,\" K\";0"
     drill_fields: []
+    value_format_name: measure_format_currency
   }
 
   measure: units_sold {
@@ -337,19 +337,21 @@ view: retail_sales {
       field: modcode
       value: "not 1"
     }
+    value_format_name: measure_format_number
     drill_fields: []
   }
 
   measure: avg_unit_price {
     type: number
     sql: ${net_sales}/${units_sold} ;;
-    value_format_name: usd
+    value_format_name: measure_format_currency
     drill_fields: []
   }
 
   measure: net_tickets {
     type: count_distinct
     sql: concat(${checknumber},concat(${fkstoreid},${dateofbusiness_raw})) ;;
+    value_format_name: measure_format_number
     drill_fields: []
   }
 
@@ -357,5 +359,6 @@ view: retail_sales {
     type: number
     sql: ${net_sales}/${net_tickets} ;;
     drill_fields: []
+    value_format_name: measure_format_number
   }
 }
