@@ -155,7 +155,7 @@ view: consumer_sales {
 
   measure: units_per_store_per_week {
     type: number
-    sql: ${gross_units_less_buybacks}/${distinct_accounts} ;;
+    sql: ${gross_units_less_buybacks}/${distinct_accounts}/${date.distinct_weeks};;
     drill_fields: []
   }
 }
