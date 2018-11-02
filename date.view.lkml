@@ -29,31 +29,32 @@ view: date {
   dimension: fiscal_day {
     type: string
     sql: ${TABLE}."FISCAL_DAY" ;;
-    group_label: "Fiscal"
+    group_label: "Fiscal Date"
+    hidden: yes
   }
 
   dimension: fiscal_month {
     type: string
     sql: ${TABLE}."FISCAL_MONTH" ;;
-    group_label: "Fiscal"
+    group_label: "Fiscal Date"
   }
 
   dimension: fiscal_quarter {
     type: string
     sql: ${TABLE}."FISCAL_QUARTER" ;;
-    group_label: "Fiscal"
+    group_label: "Fiscal Date"
   }
 
   dimension: fiscal_week {
     type: string
     sql: ${TABLE}."FISCAL_WEEK" ;;
-    group_label: "Fiscal"
+    group_label: "Fiscal Date"
   }
 
   dimension: fiscal_year {
     type: string
     sql: ${TABLE}."FISCAL_YEAR" ;;
-    group_label: "Fiscal"
+    group_label: "Fiscal Date"
   }
 
   dimension: relative_date {
