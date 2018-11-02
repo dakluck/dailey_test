@@ -345,7 +345,7 @@ view: retail_sales {
 
   measure: net_tickets {
     type: count_distinct
-    sql: concat(${checknumber},${fkstoreid},${dateofbusiness_raw}) ;;
+    sql: concat(${checknumber},concat(${fkstoreid},${dateofbusiness_raw})) ;;
     drill_fields: []
   }
 
