@@ -39,6 +39,7 @@ view: retail_sales {
     convert_tz: no
     datatype: date
     sql: ${TABLE}."DATEOFBUSINESS" ;;
+    hidden: yes
   }
 
   dimension_group: datetimestamp {
@@ -53,6 +54,7 @@ view: retail_sales {
       year
     ]
     sql: ${TABLE}."DATETIMESTAMP" ;;
+    hidden: yes
   }
 
   dimension: discpric {
@@ -70,6 +72,7 @@ view: retail_sales {
   dimension: excltax {
     type: string
     sql: ${TABLE}."EXCLTAX" ;;
+    hidden: yes
   }
 
   dimension: familystyleportion {
@@ -99,6 +102,7 @@ view: retail_sales {
   dimension: fkitemid {
     type: string
     sql: ${TABLE}."FKITEMID" ;;
+    hidden: yes
   }
 
   dimension: fkoccasionid {
@@ -218,6 +222,7 @@ view: retail_sales {
   dimension: origin {
     type: string
     sql: ${TABLE}."ORIGIN" ;;
+    hidden: yes
   }
 
   dimension: parentid {
@@ -344,6 +349,7 @@ view: retail_sales {
     drill_fields: []
     value_format_name: measure_format_currency
     group_label: "Net Sales"
+    description: "sales amount less any discounts applied, less inclusive tax"
   }
 
  measure: net_sales_ty {
