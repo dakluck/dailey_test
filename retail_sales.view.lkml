@@ -328,9 +328,10 @@ view: retail_sales {
     hidden: yes
   }
 
+  #need to figure out this logic
   dimension: date_sk {
     type: number
-    sql: concat(${dateofbusiness_year},concat(format${dateofbusiness_month_num},'00'),format(${dateofbusiness_day_of_month},'00'));;
+    sql: concat(${dateofbusiness_year},concat(${dateofbusiness_month_num},${dateofbusiness_day_of_month}));;
   }
 
   measure: net_sales {
