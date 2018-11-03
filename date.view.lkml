@@ -32,6 +32,7 @@ view: date {
     sql: ${TABLE}."FISCAL_DAY" ;;
     group_label: "Fiscal Date"
     hidden: yes
+    drill_fields: [day_name]
   }
 
   dimension: fiscal_year_day {
@@ -45,6 +46,7 @@ view: date {
     type: number
     sql: lpad(${TABLE}."FISCAL_WEEK",2,0) ;;
     group_label: "Fiscal Date"
+    drill_fields: [fiscal_day]
   }
 
   dimension: fiscal_year_week {
@@ -58,6 +60,7 @@ view: date {
     type: number
     sql: lpad(${TABLE}."FISCAL_MONTH",2,0) ;;
     group_label: "Fiscal Date"
+    drill_fields: [fiscal_week]
   }
 
   dimension: fiscal_year_month {
@@ -72,6 +75,7 @@ view: date {
     type: number
     sql: lpad(${TABLE}."FISCAL_QUARTER",2,0) ;;
     group_label: "Fiscal Date"
+    drill_fields: [fiscal_month]
   }
 
   dimension: fiscal_year_quarter {
@@ -79,12 +83,14 @@ view: date {
     sql: concat(${fiscal_year},concat(' - ', ${fiscal_quarter}));;
     group_label: "Fiscal Date"
     order_by_field: fiscal_year_quarter_sort
+    drill_fields: [fiscal_year_month]
   }
 
   dimension: fiscal_year {
     type: number
     sql: ${TABLE}."FISCAL_YEAR" ;;
     group_label: "Fiscal Date"
+    drill_fields: [fiscal_quarter]
   }
 
   dimension: fiscal_year_month_sort {
