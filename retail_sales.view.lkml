@@ -352,6 +352,10 @@ view: retail_sales {
       field: date.relative_date_clean
       value: "TY - Year"
       }
+  filters: {
+    field: modcode
+    value: "not 1"
+  }
     group_label: "Net Sales"
   }
 
@@ -365,6 +369,10 @@ view: retail_sales {
     filters: {
       field: date.to_date
       value: "1"
+    }
+    filters: {
+      field: modcode
+      value: "not 1"
     }
     group_label: "Net Sales"
   }
