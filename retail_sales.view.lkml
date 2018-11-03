@@ -350,8 +350,8 @@ view: retail_sales {
    type: sum
     sql: ${net_sales_column};;
     filters: {
-      field: date.relative_date_clean
-      value: "TY - Year"
+      field: date.relative_date
+      value: "%TY - Year%"
       }
   filters: {
     field: modcode
@@ -365,8 +365,8 @@ view: retail_sales {
     type: sum
     sql: ${net_sales_column};;
     filters: {
-      field: date.relative_date_clean
-      value: "LY - Year"
+      field: date.relative_date
+      value: "%LY - Year%"
     }
     filters: {
       field: date.to_date

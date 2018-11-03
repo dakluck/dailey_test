@@ -62,49 +62,6 @@ view: date {
     sql: ${TABLE}."RELATIVE_DATE" ;;
   }
 
-  dimension: relative_date_clean {
-    type: string
-    case: {
-      when: {
-        sql: ${relative_date} like 'LY - Year%' ;;
-        label: "LY - Year"
-      }
-      when: {
-        sql: ${relative_date} like 'LY - Year;LY - Quarter%' ;;
-        label: "LY - Quarter"
-      }
-      when: {
-        sql: ${relative_date} like 'LY - Year;LY - Quarter;LY - Month%' ;;
-        label: "LY - Month"
-      }
-      when: {
-        sql: ${relative_date} like 'LY - Year;LY - Quarter;LY - Month;LY - Week%' ;;
-        label: "LY - Week"
-      }
-      when: {
-        sql: ${relative_date} like 'LY - Year;LY - Quarter;LY - Month;LY - Week;LY - Day%' ;;
-        label: "LY - Week"
-      }
-      when: {
-        sql: ${relative_date} like 'TY - Year%' ;;
-        label: "TY - Year"
-      }
-      when: {
-        sql: ${relative_date} like 'TY - Year;TY - Quarter;TY - Month%' ;;
-        label: "TY - Month"
-      }
-      when: {
-        sql: ${relative_date} like 'TY - Year;TY - Quarter;TY - Month;TY - Week%' ;;
-        label: "TY - Week"
-      }
-      when: {
-        sql: ${relative_date} like 'TY - Year;TY - Quarter;TY - Month;TY - Week;TY - Day%' ;;
-        label: "TY - Day"
-      }
-      else: "NULL"
-    }
-  }
-
   dimension: relative_date_filter {
     type: string
     case: {
