@@ -21,6 +21,7 @@ named_value_format: measure_format_currency {
 
 explore: retail_sales {
   join: date {
+    type: inner
     relationship: many_to_one
     sql_on: ${retail_sales.date_sk} = ${date.date_sk} ;;
   }
@@ -29,6 +30,7 @@ explore: retail_sales {
 
 explore: consumer_sales {
   join: date {
+    type: inner
     relationship: many_to_one
     sql_on: ${consumer_sales.date_sk} = ${date.date_sk} ;;
   }
