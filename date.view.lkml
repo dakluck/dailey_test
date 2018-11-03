@@ -71,6 +71,12 @@ view: date {
     drill_fields: [fiscal_year_week]
   }
 
+  dimension: fiscal_month_week {
+    type: number
+    sql: concat(${fiscal_month},${fiscal_week}) ;;
+    group_label: "Fiscal Date"
+  }
+
   dimension: fiscal_quarter {
     type: number
     sql: lpad(${TABLE}."FISCAL_QUARTER",2,0) ;;
