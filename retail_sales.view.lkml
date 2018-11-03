@@ -28,6 +28,7 @@ view: retail_sales {
     type: time
     timeframes: [
       raw,
+      day_of_month,
       date,
       week,
       month,
@@ -318,13 +319,18 @@ view: retail_sales {
     hidden: yes
   }
 
+  #custom dimensions below here
+
   dimension: net_sales_column {
     type: string
     sql: case when ${discpric} is null then ${price} else ${discpric} end - ${incltax} ;;
     hidden: yes
   }
 
-  #custom dimensions below here
+  dimension: date_sk {
+    type: number
+    sql: concat(${dateofbusiness_year},concat(${dateofbusiness_month},${dateofbusiness_day_of_month});;
+  }
 
   measure: net_sales {
     type: sum

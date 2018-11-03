@@ -22,7 +22,7 @@ named_value_format: measure_format_currency {
 explore: retail_sales {
   join: date {
     relationship: many_to_one
-    sql_on: ${retail_sales.dateofbusiness_date} = ${date.calendar_date} ;;
+    sql_on: ${retail_sales.date_sk} = ${date.date_sk} ;;
   }
   group_label: "Retail"
 }
