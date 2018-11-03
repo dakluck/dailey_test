@@ -563,6 +563,7 @@ view: retail_sales {
     type: number
     sql: ${net_sales}/nullif(${net_tickets},0) ;;
     drill_fields: []
+    group_label: "Transactions"
     value_format_name: measure_format_currency
   }
 
