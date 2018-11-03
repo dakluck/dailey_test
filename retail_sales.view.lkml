@@ -368,7 +368,7 @@ view: retail_sales {
     }
     filters: {
       field: date.to_date
-      value: "1"
+      value: "To Date"
     }
     filters: {
       field: modcode
