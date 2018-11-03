@@ -87,26 +87,26 @@ view: date {
 
   dimension: fiscal_year_month_sort {
     type: number
-    sql: concat(${fiscal_year},${fiscal_month});;
+    sql: concat(${fiscal_year},lpad(${fiscal_month},2,0);;
     hidden: yes
   }
 
   dimension: fiscal_year_quarter_sort {
     type: number
-    sql: concat(${fiscal_year},${fiscal_quarter});;
+    sql: concat(${fiscal_year},lpad(${fiscal_quarter},2,0));;
     hidden: yes
   }
 
   dimension: fiscal_year_week_sort {
     type: number
-    sql: concat(${fiscal_year},${fiscal_week});;
+    sql: concat(${fiscal_year},lpad(${fiscal_week},2,0));;
     group_label: "Fiscal Date"
     hidden: yes
   }
 
   dimension: fiscal_year_day_sort {
     type: number
-    sql: concat(${fiscal_year},concat(${fiscal_month},${fiscal_day}));;
+    sql: concat(${fiscal_year},concat(lpad(${fiscal_month},2,0),lpad(${fiscal_day},2,0)));;
     group_label: "Fiscal Date"
     hidden: yes
   }
