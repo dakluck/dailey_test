@@ -632,15 +632,9 @@ view: retail_sales {
     sql: concat(${fkstoreid},${date_sk});;
   }
 
-  measure: unit_store_days {
-    type: count_distinct
-    sql: concat(${fkstoreid},concat(${date_sk},${fkitemid}));;
-    hidden: yes
-  }
-
   measure: units_per_store_per_day {
     type: number
-    sql: ${units_sold}/${unit_store_days};;
+    sql: ${units_sold}/${store_days};;
     group_label: "Units"
   }
 
