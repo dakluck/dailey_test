@@ -474,14 +474,13 @@ view: retail_sales {
     type: number
     sql: ${units_sold}/nullif(${net_tickets},0) ;;
     drill_fields: []
-    value_format_name: measure_format_number
   }
 
   measure: avg_ticket {
     type: number
     sql: ${net_sales}/nullif(${net_tickets},0) ;;
     drill_fields: []
-    value_format_name: measure_format_number
+    value_format_name: usd
   }
 
 }
