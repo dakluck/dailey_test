@@ -342,7 +342,7 @@ view: retail_sales {
    type: sum
     sql: ${net_sales_column};;
     filters: {
-      field: date.relative_date_clean_absolute
+      field: date.relative_date_clean
       value: "TY - Year"
       }
     group_label: "Net Sales"
@@ -352,7 +352,7 @@ view: retail_sales {
     type: sum
     sql: ${net_sales_column};;
     filters: {
-      field: date.relative_date_clean_absolute
+      field: date.relative_date_clean
       value: "LY - Year"
     }
     filters: {

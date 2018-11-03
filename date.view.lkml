@@ -62,7 +62,7 @@ view: date {
     sql: ${TABLE}."RELATIVE_DATE" ;;
   }
 
-  dimension: relative_date_clean_relative {
+  dimension: relative_date_clean {
     type: string
     case: {
       when: {
@@ -98,28 +98,6 @@ view: date {
         label: "TY - Day"
       }
       else: "NULL"
-    }
-  }
-
-  dimension: relative_date_clean_absolute {
-    type: string
-    case: {
-      when: {
-        sql: ${relative_date} like '%Year%',${to_date} = 1;;
-        label: "Year"
-      }
-      when: {
-        sql: and(${relative_date} like '%Year%', ${relative_date} like '%Quarter%',${to_date} = 1);;
-        label: "Quarter"
-      }
-      when: {
-        sql: and(${relative_date} like '%Year%', ${relative_date} like '%Quarter%',${relative_date} like '%Month%',${to_date} = 1);;
-        label: "Month"
-      }
-       when: {
-        sql: and(${relative_date} like '%Year%', ${relative_date} like '%Quarter%',${relative_date} like '%Month%',${relative_date} like '%Week%',${to_date} = 1);;
-        label: "Week"
-      }
     }
   }
 
