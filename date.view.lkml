@@ -17,7 +17,7 @@ view: date {
   }
 
   dimension: date_sk {
-    type: string
+    type: number
     sql: ${TABLE}."DATE_SK" ;;
   }
 
