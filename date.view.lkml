@@ -110,23 +110,23 @@ view: date {
     case: {
       when: {
         sql: ${relative_date} like '%Year%' ;;
-        label: "LY - Year"
+        label: "YTD"
       }
       when: {
         sql: ${relative_date} like '%Quarter%' ;;
-        label: "LY - Quarter"
+        label: "QTD"
       }
       when: {
         sql: ${relative_date} like '%Month%' ;;
-        label: "LY - Month"
+        label: "MTD"
       }
       when: {
         sql: ${relative_date} like '%Week%' ;;
-        label: "LY - Week"
+        label: "WTD"
       }
       when: {
         sql: ${relative_date} like '%Day%' ;;
-        label: "TY - Day"
+        label: "YESTERDAY"
       }
       else: "NULL"
     }
