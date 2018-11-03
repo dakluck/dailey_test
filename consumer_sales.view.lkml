@@ -120,6 +120,57 @@ view: consumer_sales {
     }
     value_format: "[>=1000000000]$0.0,,,\" B\";[>=1000000]$0.0,,\" M\";[>=1000]$0.0,,\" K\";0"
     drill_fields: []
+    group_label: "Gross Sales Less Buybacks"
+  }
+
+  measure: gross_sales_less_buybacks_ty {
+    type: sum
+    sql: ${amount};;
+    filters: {
+      field: date.relative_date
+      value: "%TY - Year%"
+    }
+    filters: {
+      field: transaction_type
+      value: "Buyback,Sales"
+    }
+    group_label: "Gross Sales Less Buybacks"
+    value_format_name: measure_format_currency
+  }
+
+  measure: gross_sales_less_buybacks_ly {
+    type: sum
+    sql: ${amount};;
+    filters: {
+      field: date.relative_date
+      value: "%LY - Year%"
+    }
+    filters: {
+      field: date.to_date
+      value: "To Date"
+    }
+    group_label: "Gross Sales Less Buybacks"
+    value_format_name: measure_format_currency
+  }
+
+  measure: gross_sales_less_buybacks_var {
+    type: number
+    sql: ${gross_sales_less_buybacks_ty} - ${gross_sales_less_buybacks_ly};;
+    value_format_name: measure_format_currency
+    group_label: "Gross Sales Less Buybacks"
+  }
+
+  measure: gross_sales_less_buybacks_growth {
+    type: number
+    sql: ${gross_sales_less_buybacks_var}/nullif(${gross_sales_less_buybacks_ly},0) ;;
+    value_format_name: percent_1
+    group_label: "Gross Sales Less Buybacks"
+    html:
+    {% if value >= 0 %}
+    <font color="green">{{ rendered_value }}</font>
+    {% else %}
+    <font color="red">{{ rendered_value }}</font>
+    {% endif %} ;;
   }
 
   measure: gross_units_less_buybacks {
@@ -132,6 +183,56 @@ view: consumer_sales {
     drill_fields: []
   }
 
+  measure: gross_units_less_buybacks_ty {
+    type: sum
+    sql: ${qty};;
+    filters: {
+      field: date.relative_date
+      value: "%TY - Year%"
+    }
+    filters: {
+      field: transaction_type
+      value: "Buyback,Sales"
+    }
+    group_label: "Gross Units Less Buybacks"
+    value_format_name: measure_format_number
+  }
+
+  measure: gross_units_less_buybacks_ly {
+    type: sum
+    sql: ${qty};;
+    filters: {
+      field: date.relative_date
+      value: "%LY - Year%"
+    }
+    filters: {
+      field: date.to_date
+      value: "To Date"
+    }
+    group_label: "Gross Units Less Buybacks"
+    value_format_name: measure_format_number
+  }
+
+  measure: gross_units_less_buybacks_var {
+    type: number
+    sql: ${gross_units_less_buybacks_ty} - ${gross_units_less_buybacks_ly};;
+    value_format_name: measure_format_number
+    group_label: "Gross Units Less Buybacks"
+  }
+
+  measure: gross_units_less_buybacks_growth {
+    type: number
+    sql: ${gross_units_less_buybacks_var}/nullif(${gross_units_less_buybacks_ly},0) ;;
+    value_format_name: percent_1
+    group_label: "Gross Units Less Buybacks"
+    html:
+    {% if value >= 0 %}
+    <font color="green">{{ rendered_value }}</font>
+    {% else %}
+    <font color="red">{{ rendered_value }}</font>
+    {% endif %} ;;
+  }
+
   measure: gross_cost_less_buybacks {
     type: sum
     sql: ${cost} ;;
@@ -139,7 +240,7 @@ view: consumer_sales {
       field: transaction_type
       value: "Buyback,Sales"
     }
-    value_format_name: usd
+    value_format_name: measure_format_currency
     drill_fields: []
   }
 
