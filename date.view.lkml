@@ -33,27 +33,16 @@ view: date {
     hidden: yes
   }
 
-  dimension: fiscal_month {
-    type: number
-    sql: ${TABLE}."FISCAL_MONTH" ;;
+  dimension: fiscal_year_day {
+    type: string
+    sql: concat(${fiscal_year},concat(' - ', concat(${fiscal_month}, concat(' - ',${fiscal_day}))));;
     group_label: "Fiscal Date"
-  }
-
-  dimension: fiscal_quarter {
-    type: number
-    sql: ${TABLE}."FISCAL_QUARTER" ;;
-    group_label: "Fiscal Date"
+    order_by_field: fiscal_year_day_sort
   }
 
   dimension: fiscal_week {
     type: number
     sql: ${TABLE}."FISCAL_WEEK" ;;
-    group_label: "Fiscal Date"
-  }
-
-  dimension: fiscal_year {
-    type: number
-    sql: ${TABLE}."FISCAL_YEAR" ;;
     group_label: "Fiscal Date"
   }
 
@@ -64,6 +53,50 @@ view: date {
     order_by_field: fiscal_year_week_sort
   }
 
+  dimension: fiscal_month {
+    type: number
+    sql: ${TABLE}."FISCAL_MONTH" ;;
+    group_label: "Fiscal Date"
+  }
+
+  dimension: fiscal_year_month {
+    type: string
+    sql: concat(${fiscal_year},concat(' - ', ${fiscal_month}));;
+    group_label: "Fiscal Date"
+    order_by_field: fiscal_year_month_sort
+  }
+
+  dimension: fiscal_quarter {
+    type: number
+    sql: ${TABLE}."FISCAL_QUARTER" ;;
+    group_label: "Fiscal Date"
+  }
+
+  dimension: fiscal_year_quarter {
+    type: string
+    sql: concat(${fiscal_year},concat(' - ', ${fiscal_quarter}));;
+    group_label: "Fiscal Date"
+    order_by_field: fiscal_year_quarter_sort
+  }
+
+  dimension: fiscal_year {
+    type: number
+    sql: ${TABLE}."FISCAL_YEAR" ;;
+    group_label: "Fiscal Date"
+  }
+
+  dimension: fiscal_year_month_sort {
+    type: number
+    sql: concat(${fiscal_year},${fiscal_month});;
+    hidden: yes
+  }
+
+  dimension: fiscal_year_quarter_sort {
+    type: number
+    sql: concat(${fiscal_year},${fiscal_quarter});;
+    hidden: yes
+  }
+
   dimension: fiscal_year_week_sort {
     type: number
     sql: concat(${fiscal_year},${fiscal_week});;
@@ -71,36 +104,16 @@ view: date {
     hidden: yes
   }
 
+  dimension: fiscal_year_day_sort {
+    type: number
+    sql: concat(${fiscal_year},concat(${fiscal_month},${fiscal_day}));;
+    group_label: "Fiscal Date"
+    hidden: yes
+  }
+
   dimension: relative_date {
     type: string
     sql: ${TABLE}."RELATIVE_DATE" ;;
-  }
-
-  dimension: relative_date_filter {
-    type: string
-    case: {
-      when: {
-        sql: ${relative_date} like '%Year%' ;;
-        label: "YTD"
-      }
-      when: {
-        sql: ${relative_date} like '%Quarter%' ;;
-        label: "QTD"
-      }
-      when: {
-        sql: ${relative_date} like '%Month%' ;;
-        label: "MTD"
-      }
-      when: {
-        sql: ${relative_date} like '%Week%' ;;
-        label: "WTD"
-      }
-      when: {
-        sql: ${relative_date} like '%Day%' ;;
-        label: "YESTERDAY"
-      }
-      else: ""
-    }
   }
 
   dimension: relative_date_clean {
@@ -150,9 +163,9 @@ view: date {
     }
   }
 
-  dimension: relative_date_test {
+  dimension: relative_date_test_ty {
     type: string
-    sql: replace(${relative_date},or('TY - ','LY - '),'') ;;
+    sql: replace(${relative_date},'.. - ') ;;
   }
 
   dimension: to_date {
