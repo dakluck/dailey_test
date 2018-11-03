@@ -82,6 +82,10 @@ view: date {
         label: "LY - Week"
       }
       when: {
+        sql: ${relative_date} like 'LY - Year;LY - Quarter;LY - Month;LY - Week;LY - Day%' ;;
+        label: "LY - Week"
+      }
+      when: {
         sql: ${relative_date} like 'TY - Year%' ;;
         label: "TY - Year"
       }
@@ -95,6 +99,33 @@ view: date {
       }
       when: {
         sql: ${relative_date} like 'TY - Year;TY - Quarter;TY - Month;TY - Week;TY - Day%' ;;
+        label: "TY - Day"
+      }
+      else: "NULL"
+    }
+  }
+
+  dimension: relative_date_filter {
+    type: string
+    case: {
+      when: {
+        sql: ${relative_date} like '%Year%' ;;
+        label: "LY - Year"
+      }
+      when: {
+        sql: ${relative_date} like '%Quarter%' ;;
+        label: "LY - Quarter"
+      }
+      when: {
+        sql: ${relative_date} like '%Month%' ;;
+        label: "LY - Month"
+      }
+      when: {
+        sql: ${relative_date} like '%Week%' ;;
+        label: "LY - Week"
+      }
+      when: {
+        sql: ${relative_date} like %Day%' ;;
         label: "TY - Day"
       }
       else: "NULL"
