@@ -399,6 +399,12 @@ view: retail_sales {
     sql: ${net_sales_var}/nullif(${net_sales_ly},0) ;;
     value_format_name: percent_1
     group_label: "Net Sales"
+    html:
+    {% if value >= 0 %}
+    <font color="darkgreen">{{ rendered_value }}</font>
+    {% else %}
+    <font color="darkred">{{ rendered_value }}</font>
+    {% endif %} ;;
   }
 
   measure: units_sold {
@@ -461,6 +467,12 @@ view: retail_sales {
     sql: ${units_sold_var}/nullif(${units_sold_ly},0) ;;
     value_format_name: percent_1
     group_label: "Units"
+    html:
+    {% if value >= 0 %}
+    <font color="darkgreen">{{ rendered_value }}</font>
+    {% else %}
+    <font color="darkred">{{ rendered_value }}</font>
+    {% endif %} ;;
   }
 
   measure: avg_unit_price {
@@ -518,6 +530,12 @@ view: retail_sales {
     sql: ${net_tickets_var}/nullif(${net_tickets_ly},0) ;;
     value_format_name: percent_1
     group_label: "Transactions"
+    html:
+    {% if value >= 0 %}
+    <font color="darkgreen">{{ rendered_value }}</font>
+    {% else %}
+    <font color="darkred">{{ rendered_value }}</font>
+    {% endif %} ;;
   }
 
   measure: units_per_transaction {
@@ -557,6 +575,12 @@ view: retail_sales {
     sql: ${units_per_transaction_var}/nullif(${units_per_transaction_ly},0) ;;
     value_format_name: percent_1
     group_label: "Units"
+    html:
+    {% if value >= 0 %}
+    <font color="darkgreen">{{ rendered_value }}</font>
+    {% else %}
+    <font color="darkred">{{ rendered_value }}</font>
+    {% endif %} ;;
   }
 
   measure: avg_ticket {
@@ -595,6 +619,12 @@ view: retail_sales {
     sql: ${avg_ticket_var}/nullif(${avg_ticket_ly},0) ;;
     value_format_name: percent_1
     group_label: "Transactions"
+    html:
+    {% if value >= 0 %}
+    <font color="darkgreen">{{ rendered_value }}</font>
+    {% else %}
+    <font color="darkred">{{ rendered_value }}</font>
+    {% endif %} ;;
   }
 
 }
