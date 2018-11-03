@@ -669,11 +669,72 @@ view: retail_sales {
     sql: concat(${fkstoreid},${date_sk});;
   }
 
+  measure: store_days_ty {
+    type: count_distinct
+    sql: concat(${fkstoreid},${date_sk});;
+    filters: {
+      field: date.relative_date
+      value: "%TY - Year%"
+    }
+  }
+
+  measure: store_days_ly {
+    type: count_distinct
+    sql: concat(${fkstoreid},${date_sk});;
+    filters: {
+      field: date.relative_date
+      value: "%LY - Year%"
+    }
+    filters: {
+      field: date.to_date
+      value: "To Date"
+    }
+    }
+
+  measure: store_days_var {
+    type: number
+    sql: ${store_days_ty}-${store_days_ly};;
+  }
+
   measure: units_per_store_per_day {
     type: number
     sql: ${units_sold}/${store_days};;
     group_label: "Units Per Store Per Day"
     value_format_name: measure_format_number
+  }
+
+  measure: units_per_store_per_day_ty {
+    type: number
+    sql: ${units_sold_ty}/${store_days_ty};;
+    group_label: "Units Per Store Per Day"
+    value_format_name: measure_format_number
+  }
+
+  measure: units_per_store_per_day_ly {
+    type: number
+    sql: ${units_sold_ly}/${store_days_ly};;
+    group_label: "Units Per Store Per Day"
+    value_format_name: measure_format_number
+  }
+
+  measure: units_per_store_per_day_var {
+    type: number
+    sql: ${units_per_store_per_day_ty}-${units_per_store_per_day_ly} ;;
+    group_label: "Units Per Store Per Day"
+    value_format_name: measure_format_number
+  }
+
+  measure: units_per_store_per_date_growth {
+    type: number
+    sql: ${units_per_store_per_day_var}/nullif(${units_per_store_per_day_ly},0) ;;
+    value_format_name: percent_1
+    group_label: "Units Per Store Per Day"
+    html:
+    {% if value >= 0 %}
+    <font color="green">{{ rendered_value }}</font>
+    {% else %}
+    <font color="red">{{ rendered_value }}</font>
+    {% endif %} ;;
   }
 
 
