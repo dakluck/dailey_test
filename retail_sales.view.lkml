@@ -474,7 +474,50 @@ view: retail_sales {
     type: count_distinct
     sql: concat(${Check_Number},concat(${fkstoreid},${dateofbusiness_raw})) ;;
     value_format_name: measure_format_number
+    group_label: "Transactions"
     drill_fields: []
+  }
+
+  measure: net_tickets_ty {
+    type: count_distinct
+    sql: concat(${Check_Number},concat(${fkstoreid},${dateofbusiness_raw})) ;;
+    filters: {
+      field: date.relative_date
+      value: "%TY - Year%"
+    }
+    value_format_name: measure_format_number
+    group_label: "Transactions"
+    drill_fields: []
+  }
+
+  measure: net_tickets_ly {
+    type: count_distinct
+    sql: concat(${Check_Number},concat(${fkstoreid},${dateofbusiness_raw})) ;;
+    filters: {
+      field: date.relative_date
+      value: "%LY - Year%"
+    }
+    filters: {
+      field: date.to_date
+      value: "To Date"
+    }
+    value_format_name: measure_format_number
+    group_label: "Transactions"
+    drill_fields: []
+  }
+
+  measure: net_tickets_var {
+    type: number
+    sql: ${net_tickets_ty} - ${net_tickets_ty};;
+    group_label: "Transactions"
+    value_format_name: measure_format_number
+  }
+
+  measure: net_tickets_growth {
+    type: number
+    sql: ${net_tickets_var}/nullif(${net_tickets_ly},0) ;;
+    value_format_name: percent_1
+    group_label: "Transactions"
   }
 
   measure: units_per_transaction {
