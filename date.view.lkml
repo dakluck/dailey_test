@@ -87,7 +87,7 @@ view: date {
 
   dimension: fiscal_year_month_sort {
     type: number
-    sql: concat(${fiscal_year},lpad(${fiscal_month},2,0);;
+    sql: concat(${fiscal_year},lpad(${fiscal_month},2,0));;
     hidden: yes
   }
 
