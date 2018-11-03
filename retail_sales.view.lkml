@@ -400,15 +400,66 @@ view: retail_sales {
     filters: {
       field: modcode
       value: "not 1"
+      }
+    value_format_name: measure_format_number
+    group_label: "Units"
+    drill_fields: []
+  }
+
+  measure: units_sold_ty {
+    type: sum
+    sql: ${quantityunit} ;;
+    filters: {
+      field: modcode
+      value: "not 1"
     }
+    filters: {
+      field: date.relative_date
+      value: "%TY - Year%"
+    }
+    group_label: "Units"
     value_format_name: measure_format_number
     drill_fields: []
+  }
+
+  measure: units_sold_ly {
+    type: sum
+    sql: ${quantityunit} ;;
+    filters: {
+      field: modcode
+      value: "not 1"
+    }
+    filters: {
+      field: date.relative_date
+      value: "%LY - Year%"
+    }
+    filters: {
+      field: date.to_date
+      value: "To Date"
+    }
+    group_label: "Units"
+    value_format_name: measure_format_number
+    drill_fields: []
+  }
+
+  measure: units_sold_var {
+    type: number
+    sql: ${units_sold_ty} - ${units_sold_ly};;
+    group_label: "Units"
+    value_format_name: measure_format_currency
+  }
+
+  measure: units_sold_growth {
+    type: number
+    sql: ${units_sold_var}/nullif(${units_sold_ly},0) ;;
+    value_format_name: percent_1
+    group_label: "Units"
   }
 
   measure: avg_unit_price {
     type: number
     sql: ${net_sales}/nullif(${units_sold},0) ;;
-    value_format_name: measure_format_currency
+    value_format_name: usd
     drill_fields: []
   }
 
@@ -421,8 +472,16 @@ view: retail_sales {
 
   measure: units_per_transaction {
     type: number
+    sql: ${units_sold}/nullif(${net_tickets},0) ;;
+    drill_fields: []
+    value_format_name: measure_format_number
+  }
+
+  measure: avg_ticket {
+    type: number
     sql: ${net_sales}/nullif(${net_tickets},0) ;;
     drill_fields: []
     value_format_name: measure_format_number
   }
+
 }
