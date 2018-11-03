@@ -401,9 +401,9 @@ view: retail_sales {
     group_label: "Net Sales"
     html:
     {% if value >= 0 %}
-    <font color="darkgreen">{{ rendered_value }}</font>
+    <font color="green">{{ rendered_value }}</font>
     {% else %}
-    <font color="darkred">{{ rendered_value }}</font>
+    <font color="red">{{ rendered_value }}</font>
     {% endif %} ;;
   }
 
@@ -469,9 +469,9 @@ view: retail_sales {
     group_label: "Units"
     html:
     {% if value >= 0 %}
-    <font color="darkgreen">{{ rendered_value }}</font>
+    <font color="green">{{ rendered_value }}</font>
     {% else %}
-    <font color="darkred">{{ rendered_value }}</font>
+    <font color="red">{{ rendered_value }}</font>
     {% endif %} ;;
   }
 
@@ -532,9 +532,9 @@ view: retail_sales {
     group_label: "Transactions"
     html:
     {% if value >= 0 %}
-    <font color="darkgreen">{{ rendered_value }}</font>
+    <font color="green">{{ rendered_value }}</font>
     {% else %}
-    <font color="darkred">{{ rendered_value }}</font>
+    <font color="red">{{ rendered_value }}</font>
     {% endif %} ;;
   }
 
@@ -577,9 +577,9 @@ view: retail_sales {
     group_label: "Units"
     html:
     {% if value >= 0 %}
-    <font color="darkgreen">{{ rendered_value }}</font>
+    <font color="green">{{ rendered_value }}</font>
     {% else %}
-    <font color="darkred">{{ rendered_value }}</font>
+    <font color="red">{{ rendered_value }}</font>
     {% endif %} ;;
   }
 
@@ -621,9 +621,9 @@ view: retail_sales {
     group_label: "Transactions"
     html:
     {% if value >= 0 %}
-    <font color="darkgreen">{{ rendered_value }}</font>
+    <font color="green">{{ rendered_value }}</font>
     {% else %}
-    <font color="darkred">{{ rendered_value }}</font>
+    <font color="red">{{ rendered_value }}</font>
     {% endif %} ;;
   }
 
