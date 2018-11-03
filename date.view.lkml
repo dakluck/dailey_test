@@ -57,6 +57,20 @@ view: date {
     group_label: "Fiscal Date"
   }
 
+  dimension: fiscal_year_week {
+    type: number
+    sql: concat(${fiscal_year},concat(" - ", ${fiscal_week});;
+    group_label: "Fiscal Date"
+    order_by_field: fiscal_year_week_sort
+  }
+
+  dimension: fiscal_year_week_sort {
+    type: number
+    sql: concat(${fiscal_year},${fiscal_week}));;
+    group_label: "Fiscal Date"
+    hidden: yes
+  }
+
   dimension: relative_date {
     type: string
     sql: ${TABLE}."RELATIVE_DATE" ;;
