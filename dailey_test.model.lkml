@@ -11,7 +11,7 @@ datagroup: dailey_test_default_datagroup {
 persist_with: dailey_test_default_datagroup
 
 named_value_format: measure_format_number {
-  value_format: "[>=1000000000]0.0,,,\" B\";[>=1000000]0.0,,\" M\";0.00"
+  value_format: "[>=1000000000]0.0,,,\" B\";[>=1000000]0.0,,\" M\";[>=1000]0.0,;0.00"
 }
 
 named_value_format: measure_format_currency {
