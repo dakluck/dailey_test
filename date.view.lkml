@@ -66,35 +66,35 @@ view: date {
     type: string
     case: {
       when: {
-        sql: ${relative_date} = 'LY - Year' ;;
+        sql: ${relative_date} like 'LY - Year%' ;;
         label: "LY - Year"
       }
       when: {
-        sql: ${relative_date} = 'LY - Year;LY - Quarter' ;;
+        sql: or(${relative_date} like 'LY - Year;LY - Quarter%' ;;
         label: "LY - Quarter"
       }
       when: {
-        sql: ${relative_date} = 'LY - Year;LY - Quarter;LY - Month' ;;
+        sql: ${relative_date} like 'LY - Year;LY - Quarter;LY - Month%' ;;
         label: "LY - Month"
       }
       when: {
-        sql: ${relative_date} = 'LY - Year;LY - Quarter;LY - Month;LY - Week' ;;
+        sql: ${relative_date} like 'LY - Year;LY - Quarter;LY - Month;LY - Week%' ;;
         label: "LY - Week"
       }
       when: {
-        sql: ${relative_date} = 'TY - Year' ;;
+        sql: ${relative_date} like 'TY - Year%' ;;
         label: "TY - Year"
       }
       when: {
-        sql: ${relative_date} = 'TY - Year;TY - Quarter;TY - Month' ;;
+        sql: ${relative_date} like 'TY - Year;TY - Quarter;TY - Month%' ;;
         label: "TY - Month"
       }
       when: {
-        sql: ${relative_date} = 'TY - Year;TY - Quarter;TY - Month;TY - Week' ;;
+        sql: ${relative_date} like 'TY - Year;TY - Quarter;TY - Month;TY - Week%' ;;
         label: "TY - Week"
       }
       when: {
-        sql: ${relative_date} = 'TY - Year;TY - Quarter;TY - Month;TY - Week;TY - Day' ;;
+        sql: ${relative_date} like 'TY - Year;TY - Quarter;TY - Month;TY - Week;TY - Day%' ;;
         label: "TY - Day"
       }
       else: "NULL"
