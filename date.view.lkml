@@ -42,7 +42,7 @@ view: date {
 
   dimension: fiscal_week {
     type: number
-    sql: ${TABLE}."FISCAL_WEEK" ;;
+    sql: lpad(${TABLE}."FISCAL_WEEK",2,0) ;;
     group_label: "Fiscal Date"
   }
 
@@ -55,7 +55,7 @@ view: date {
 
   dimension: fiscal_month {
     type: number
-    sql: ${TABLE}."FISCAL_MONTH" ;;
+    sql: lpad(${TABLE}."FISCAL_MONTH",2,0) ;;
     group_label: "Fiscal Date"
   }
 
@@ -69,7 +69,7 @@ view: date {
 
   dimension: fiscal_quarter {
     type: number
-    sql: ${TABLE}."FISCAL_QUARTER" ;;
+    sql: lpad(${TABLE}."FISCAL_QUARTER",2,0) ;;
     group_label: "Fiscal Date"
   }
 
@@ -88,26 +88,26 @@ view: date {
 
   dimension: fiscal_year_month_sort {
     type: number
-    sql: concat(${fiscal_year},lpad(${fiscal_month},2,0));;
+    sql: concat(${fiscal_year},${fiscal_month});;
     hidden: yes
   }
 
   dimension: fiscal_year_quarter_sort {
     type: number
-    sql: concat(${fiscal_year},lpad(${fiscal_quarter},2,0));;
+    sql: concat(${fiscal_year},${fiscal_quarter});;
     hidden: yes
   }
 
   dimension: fiscal_year_week_sort {
     type: number
-    sql: concat(${fiscal_year},lpad(${fiscal_week},2,0));;
+    sql: concat(${fiscal_year},${fiscal_week});;
     group_label: "Fiscal Date"
     hidden: yes
   }
 
   dimension: fiscal_year_day_sort {
     type: number
-    sql: concat(${fiscal_year},concat(lpad(${fiscal_month},2,0),lpad(${fiscal_day},2,0)));;
+    sql: concat(${fiscal_year},concat(${fiscal_month},${fiscal_day}));;
     group_label: "Fiscal Date"
     hidden: yes
   }
