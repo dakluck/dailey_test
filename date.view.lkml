@@ -179,6 +179,7 @@ view: date {
   dimension: to_date {
     type: string
     sql: ${TABLE}."TO_DATE" ;;
+    hidden: yes
   }
 
   measure: distinct_weeks  {
