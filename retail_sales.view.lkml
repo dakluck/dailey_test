@@ -466,7 +466,7 @@ view: retail_sales {
   measure: avg_unit_price {
     type: number
     sql: ${net_sales}/nullif(${units_sold},0) ;;
-    value_format_name: usd
+    value_format_name: measure_format_currency
     drill_fields: []
   }
 
@@ -488,7 +488,7 @@ view: retail_sales {
     type: number
     sql: ${net_sales}/nullif(${net_tickets},0) ;;
     drill_fields: []
-    value_format_name: usd
+    value_format_name: measure_format_currency
   }
 
 }
