@@ -357,6 +357,7 @@ view: retail_sales {
     value: "not 1"
   }
     group_label: "Net Sales"
+  value_format_name: measure_format_currency
   }
 
   measure: net_sales_ly {
@@ -375,17 +376,20 @@ view: retail_sales {
       value: "not 1"
     }
     group_label: "Net Sales"
+    value_format_name: measure_format_currency
   }
 
   measure: net_sales_var {
     type: number
     sql: ${net_sales_ty} - ${net_sales_ly};;
     group_label: "Net Sales"
+    value_format_name: measure_format_currency
   }
 
   measure: net_sales_growth {
     type: number
     sql: ${net_sales_var}/nullif(${net_sales_ly},0) ;;
+    value_format_name: percent_1
     group_label: "Net Sales"
   }
 
