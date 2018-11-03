@@ -542,7 +542,7 @@ view: retail_sales {
     type: number
     sql: ${units_sold}/nullif(${net_tickets},0) ;;
     drill_fields: []
-    value_format_name: measure_format_number
+    value_format_name: decimal_2
     group_label: "Units"
   }
 
@@ -550,7 +550,7 @@ view: retail_sales {
     type: number
     sql: ${units_sold_ty}/nullif(${net_tickets_ty},0) ;;
     drill_fields: []
-    value_format_name: measure_format_number
+    value_format_name: decimal_2
     group_label: "Units"
   }
 
@@ -566,7 +566,7 @@ view: retail_sales {
     type: number
     sql: ${units_per_transaction_ty} - ${units_per_transaction_ly} ;;
     drill_fields: []
-    value_format_name: measure_format_number
+    value_format_name: decimal_2
     group_label: "Units"
   }
 
@@ -588,13 +588,13 @@ view: retail_sales {
     sql: ${net_sales}/nullif(${net_tickets},0) ;;
     drill_fields: []
     group_label: "Transactions"
-    value_format_name: measure_format_currency
+    value_format_name: usd
   }
 
   measure: avg_ticket_ty {
     type: number
     sql: ${net_sales_ty}/nullif(${net_tickets_ty},0) ;;
-    value_format_name: measure_format_currency
+    value_format_name: usd
     group_label: "Transactions"
     drill_fields: []
   }
@@ -602,7 +602,7 @@ view: retail_sales {
   measure: avg_ticket_ly {
     type: number
     sql: ${net_sales_ly}/nullif(${net_tickets_ly},0) ;;
-    value_format_name: measure_format_currency
+    value_format_name: usd
     group_label: "Transactions"
     drill_fields: []
   }
@@ -611,7 +611,7 @@ view: retail_sales {
     type: number
     sql: ${avg_ticket_ty} - ${avg_ticket_ly};;
     group_label: "Transactions"
-    value_format_name: measure_format_currency
+    value_format_name: usd
   }
 
   measure: avg_ticket_growth {
