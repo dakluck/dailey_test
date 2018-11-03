@@ -353,7 +353,7 @@ view: retail_sales {
     description: "sales amount less any discounts applied, less inclusive tax"
   }
 
- measure: net_sales_ty {
+ measure: net_sales_TY {
    type: sum
     sql: ${net_sales_column};;
     filters: {
@@ -368,7 +368,7 @@ view: retail_sales {
   value_format_name: measure_format_currency
   }
 
-  measure: net_sales_ly {
+  measure: net_sales_LY {
     type: sum
     sql: ${net_sales_column};;
     filters: {
@@ -389,14 +389,14 @@ view: retail_sales {
 
   measure: net_sales_var {
     type: number
-    sql: ${net_sales_ty} - ${net_sales_ly};;
+    sql: ${net_sales_TY} - ${net_sales_LY};;
     group_label: "Net Sales"
     value_format_name: measure_format_currency
   }
 
   measure: net_sales_growth {
     type: number
-    sql: ${net_sales_var}/nullif(${net_sales_ly},0) ;;
+    sql: ${net_sales_var}/nullif(${net_sales_LY},0) ;;
     value_format_name: percent_1
     group_label: "Net Sales"
     html:
@@ -419,7 +419,7 @@ view: retail_sales {
     drill_fields: []
   }
 
-  measure: units_sold_ty {
+  measure: units_sold_TY {
     type: sum
     sql: ${quantityunit} ;;
     filters: {
@@ -435,7 +435,7 @@ view: retail_sales {
     drill_fields: []
   }
 
-  measure: units_sold_ly {
+  measure: units_sold_LY {
     type: sum
     sql: ${quantityunit} ;;
     filters: {
@@ -457,14 +457,14 @@ view: retail_sales {
 
   measure: units_sold_var {
     type: number
-    sql: ${units_sold_ty} - ${units_sold_ly};;
+    sql: ${units_sold_TY} - ${units_sold_LY};;
     group_label: "Units"
     value_format_name: measure_format_currency
   }
 
   measure: units_sold_growth {
     type: number
-    sql: ${units_sold_var}/nullif(${units_sold_ly},0) ;;
+    sql: ${units_sold_var}/nullif(${units_sold_LY},0) ;;
     value_format_name: percent_1
     group_label: "Units"
     html:
@@ -490,7 +490,7 @@ view: retail_sales {
     drill_fields: []
   }
 
-  measure: net_tickets_ty {
+  measure: net_tickets_TY {
     type: count_distinct
     sql: concat(${Check_Number},concat(${fkstoreid},${dateofbusiness_raw})) ;;
     filters: {
@@ -502,7 +502,7 @@ view: retail_sales {
     drill_fields: []
   }
 
-  measure: net_tickets_ly {
+  measure: net_tickets_LY {
     type: count_distinct
     sql: concat(${Check_Number},concat(${fkstoreid},${dateofbusiness_raw})) ;;
     filters: {
@@ -520,14 +520,14 @@ view: retail_sales {
 
   measure: net_tickets_var {
     type: number
-    sql: ${net_tickets_ty} - ${net_tickets_ty};;
+    sql: ${net_tickets_TY} - ${net_tickets_TY};;
     group_label: "Transactions"
     value_format_name: measure_format_number
   }
 
   measure: net_tickets_growth {
     type: number
-    sql: ${net_tickets_var}/nullif(${net_tickets_ly},0) ;;
+    sql: ${net_tickets_var}/nullif(${net_tickets_LY},0) ;;
     value_format_name: percent_1
     group_label: "Transactions"
     html:
@@ -546,17 +546,17 @@ view: retail_sales {
     group_label: "Units"
   }
 
-  measure: units_per_transaction_ty {
+  measure: units_per_transaction_TY {
     type: number
-    sql: ${units_sold_ty}/nullif(${net_tickets_ty},0) ;;
+    sql: ${units_sold_TY}/nullif(${net_tickets_TY},0) ;;
     drill_fields: []
     value_format_name: measure_format_number
     group_label: "Units"
   }
 
-  measure: units_per_transaction_ly {
+  measure: units_per_transaction_LY {
     type: number
-    sql: ${units_sold_ly}/nullif(${net_tickets_ly},0) ;;
+    sql: ${units_sold_LY}/nullif(${net_tickets_LY},0) ;;
     drill_fields: []
     value_format_name: measure_format_number
     group_label: "Units"
@@ -564,7 +564,7 @@ view: retail_sales {
 
   measure: units_per_transaction_var {
     type: number
-    sql: ${units_per_transaction_ty} - ${units_per_transaction_ly} ;;
+    sql: ${units_per_transaction_TY} - ${units_per_transaction_LY} ;;
     drill_fields: []
     value_format_name: measure_format_number
     group_label: "Units"
@@ -572,7 +572,7 @@ view: retail_sales {
 
   measure: units_per_transaction_growth {
     type: number
-    sql: ${units_per_transaction_var}/nullif(${units_per_transaction_ly},0) ;;
+    sql: ${units_per_transaction_var}/nullif(${units_per_transaction_LY},0) ;;
     value_format_name: percent_1
     group_label: "Units"
     html:
@@ -591,17 +591,17 @@ view: retail_sales {
     value_format_name: measure_format_currency
   }
 
-  measure: avg_ticket_ty {
+  measure: avg_ticket_TY {
     type: number
-    sql: ${net_sales_ty}/nullif(${net_tickets_ty},0) ;;
+    sql: ${net_sales_TY}/nullif(${net_tickets_TY},0) ;;
     value_format_name: measure_format_currency
     group_label: "Transactions"
     drill_fields: []
   }
 
-  measure: avg_ticket_ly {
+  measure: avg_ticket_LY {
     type: number
-    sql: ${net_sales_ly}/nullif(${net_tickets_ly},0) ;;
+    sql: ${net_sales_LY}/nullif(${net_tickets_LY},0) ;;
     value_format_name: measure_format_currency
     group_label: "Transactions"
     drill_fields: []
@@ -609,14 +609,14 @@ view: retail_sales {
 
   measure: avg_ticket_var {
     type: number
-    sql: ${avg_ticket_ty} - ${avg_ticket_ly};;
+    sql: ${avg_ticket_TY} - ${avg_ticket_LY};;
     group_label: "Transactions"
     value_format_name: measure_format_currency
   }
 
   measure: avg_ticket_growth {
     type: number
-    sql: ${avg_ticket_var}/nullif(${avg_ticket_ly},0) ;;
+    sql: ${avg_ticket_var}/nullif(${avg_ticket_LY},0) ;;
     value_format_name: percent_1
     group_label: "Transactions"
     html:
