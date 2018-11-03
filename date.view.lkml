@@ -58,15 +58,15 @@ view: date {
   }
 
   dimension: fiscal_year_week {
-    type: number
-    sql: concat(${fiscal_year},concat(" - ", ${fiscal_week}));;
+    type: string
+    sql: concat(${fiscal_year},concat(' - ', ${fiscal_week}));;
     group_label: "Fiscal Date"
     order_by_field: fiscal_year_week_sort
   }
 
   dimension: fiscal_year_week_sort {
     type: number
-    sql: concat(${fiscal_year},${fiscal_week}));;
+    sql: concat(${fiscal_year},${fiscal_week});;
     group_label: "Fiscal Date"
     hidden: yes
   }
@@ -100,6 +100,53 @@ view: date {
         label: "YESTERDAY"
       }
       else: ""
+    }
+  }
+
+  dimension: relative_date_clean {
+    type: string
+    case: {
+      when: {
+        sql: ${relative_date} = 'LY - Year' ;;
+        label: "LY - Year"
+      }
+      when: {
+        sql: ${relative_date} = 'LY - Year;LY - Quarter' ;;
+        label: "LY - Quarter"
+      }
+      when: {
+        sql: ${relative_date} = 'LY - Year;LY - Quarter;LY - Month' ;;
+        label: "LY - Month"
+      }
+      when: {
+        sql: ${relative_date} = 'LY - Year;LY - Quarter;LY - Month;LY - Week' ;;
+        label: "LY - Week"
+      }
+      when: {
+        sql: ${relative_date} = 'LY - Year;LY - Quarter;LY - Month;LY - Week;LY - Day' ;;
+        label: "LY - Day"
+      }
+      when: {
+        sql: ${relative_date} = 'TY - Year' ;;
+        label: "TY - Year"
+      }
+      when: {
+        sql: ${relative_date} = 'TY - Year;TY - Quarter' ;;
+        label: "TY - Quarter"
+      }
+      when: {
+        sql: ${relative_date} = 'TY - Year;TY - Quarter;TY - Month' ;;
+        label: "TY - Month"
+      }
+      when: {
+        sql: ${relative_date} = 'TY - Year;TY - Quarter;TY - Month;TY - Week' ;;
+        label: "TY - Week"
+      }
+      when: {
+        sql: ${relative_date} = 'TY - Year;TY - Quarter;TY - Month;TY - Week;TY - Day' ;;
+        label: "TY - Day"
+      }
+      else: "NULL"
     }
   }
 
