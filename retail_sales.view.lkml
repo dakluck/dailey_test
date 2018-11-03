@@ -370,7 +370,7 @@ view: retail_sales {
 
   measure: net_sales_growth {
     type: number
-    sql: ${net_sales_var}/${net_sales_ly} ;;
+    sql: ${net_sales_var}/nullif(${net_sales_ly},0) ;;
     group_label: "Net Sales"
   }
 
@@ -387,7 +387,7 @@ view: retail_sales {
 
   measure: avg_unit_price {
     type: number
-    sql: ${net_sales}/${units_sold} ;;
+    sql: ${net_sales}/nullif(${units_sold},0) ;;
     value_format_name: measure_format_currency
     drill_fields: []
   }
@@ -401,7 +401,7 @@ view: retail_sales {
 
   measure: units_per_transaction {
     type: number
-    sql: ${net_sales}/${net_tickets} ;;
+    sql: ${net_sales}/nullif(${net_tickets},0) ;;
     drill_fields: []
     value_format_name: measure_format_number
   }
