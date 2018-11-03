@@ -70,7 +70,7 @@ view: date {
         label: "LY - Year"
       }
       when: {
-        sql: or(${relative_date} like ('LY - Year;LY - Quarter%') ;;
+        sql: ${relative_date} like ('LY - Year;LY - Quarter%') ;;
         label: "LY - Quarter"
       }
       when: {
