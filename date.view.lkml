@@ -125,7 +125,7 @@ view: date {
         label: "LY - Week"
       }
       when: {
-        sql: ${relative_date} like %Day%' ;;
+        sql: ${relative_date} like '%Day%' ;;
         label: "TY - Day"
       }
       else: "NULL"
