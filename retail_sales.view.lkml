@@ -13,7 +13,7 @@ view: retail_sales {
     hidden: yes
   }
 
-  dimension: checknumber {
+  dimension: Check_Number {
     type: string
     sql: ${TABLE}."CHECKNUMBER" ;;
   }
@@ -337,6 +337,7 @@ view: retail_sales {
   dimension: date_sk {
     type: number
     sql: concat(${dateofbusiness_year},concat(lpad(${dateofbusiness_month_num},2,0),lpad(${dateofbusiness_day_of_month},2,0)));;
+    hidden: yes
   }
 
   measure: net_sales {
@@ -471,7 +472,7 @@ view: retail_sales {
 
   measure: net_tickets {
     type: count_distinct
-    sql: concat(${checknumber},concat(${fkstoreid},${dateofbusiness_raw})) ;;
+    sql: concat(${Check_Number},concat(${fkstoreid},${dateofbusiness_raw})) ;;
     value_format_name: measure_format_number
     drill_fields: []
   }
@@ -480,6 +481,7 @@ view: retail_sales {
     type: number
     sql: ${units_sold}/nullif(${net_tickets},0) ;;
     drill_fields: []
+    value_format_name: measure_format_number
   }
 
   measure: avg_ticket {
