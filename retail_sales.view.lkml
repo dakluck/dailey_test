@@ -379,7 +379,7 @@ view: retail_sales {
 
   measure: net_sales_var {
     type: number
-    sql: ${net_sales} - ${net_sales_ly};;
+    sql: ${net_sales_ty} - ${net_sales_ly};;
     group_label: "Net Sales"
   }
 
