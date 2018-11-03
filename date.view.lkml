@@ -150,6 +150,11 @@ view: date {
     }
   }
 
+  dimension: relative_date_test {
+    type: string
+    sql: replace(${relative_date},or('TY - ','LY - '),'') ;;
+  }
+
   dimension: to_date {
     type: string
     sql: ${TABLE}."TO_DATE" ;;
