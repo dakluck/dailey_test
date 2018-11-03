@@ -636,6 +636,7 @@ view: retail_sales {
     type: number
     sql: ${units_sold}/${store_days};;
     group_label: "Units"
+    value_format_name: measure_format_number
   }
 
 
