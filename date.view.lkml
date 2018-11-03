@@ -24,7 +24,12 @@ view: date {
   dimension: day_name {
     type: string
     sql: ${TABLE}."DAY_NAME" ;;
-    order_by_field: date_sk
+    order_by_field: day_of_year
+  }
+
+  dimension: day_of_year {
+    type: number
+    sql: rownumber() over (partition by ${fiscal_year}) ;;
   }
 
   dimension: fiscal_day {
