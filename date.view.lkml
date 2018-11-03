@@ -57,12 +57,6 @@ view: date {
     group_label: "Fiscal Date"
   }
 
-  dimension: fiscal_year_week {
-    type: number
-    sql: concat(${fiscal_year},concat(" - Wk",${fiscal_week}));;
-    group_label: "Fiscal Date"
-  }
-
   dimension: relative_date {
     type: string
     sql: ${TABLE}."RELATIVE_DATE" ;;
