@@ -330,7 +330,7 @@ view: retail_sales {
 
   dimension: date_sk {
     type: number
-    sql: concat(${dateofbusiness_year},concat(00+${dateofbusiness_month_num},00+${dateofbusiness_day_of_month}));;
+    sql: concat(${dateofbusiness_year},concat(format${dateofbusiness_month_num},'00'),format(${dateofbusiness_day_of_month},'00'));;
   }
 
   measure: net_sales {
