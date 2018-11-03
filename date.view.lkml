@@ -59,7 +59,7 @@ view: date {
 
   dimension: fiscal_year_week {
     type: number
-    sql: concat(${fiscal_year},concat(" - ", ${fiscal_week});;
+    sql: concat(${fiscal_year},concat(" - ", ${fiscal_week}));;
     group_label: "Fiscal Date"
     order_by_field: fiscal_year_week_sort
   }
