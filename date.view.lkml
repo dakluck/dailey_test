@@ -24,6 +24,7 @@ view: date {
   dimension: day_name {
     type: string
     sql: ${TABLE}."DAY_NAME" ;;
+    order_by_field: date_sk
   }
 
   dimension: fiscal_day {
