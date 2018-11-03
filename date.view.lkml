@@ -64,6 +64,7 @@ view: date {
     sql: concat(${fiscal_year},concat(' - ', ${fiscal_month}));;
     group_label: "Fiscal Date"
     order_by_field: fiscal_year_month_sort
+    drill_fields: [fiscal_year_week]
   }
 
   dimension: fiscal_quarter {
