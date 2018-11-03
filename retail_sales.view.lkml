@@ -29,6 +29,7 @@ view: retail_sales {
     timeframes: [
       raw,
       day_of_month,
+      month_num,
       date,
       week,
       month,
@@ -329,7 +330,7 @@ view: retail_sales {
 
   dimension: date_sk {
     type: number
-    sql: concat(${dateofbusiness_year},concat(00+${dateofbusiness_month},00+${dateofbusiness_day_of_month}));;
+    sql: concat(${dateofbusiness_year},concat(00+${dateofbusiness_month_num},00+${dateofbusiness_day_of_month}));;
   }
 
   measure: net_sales {
