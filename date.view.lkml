@@ -98,4 +98,9 @@ view: date {
     type: count_distinct
     sql: concat(${fiscal_year},${fiscal_week}) ;;
   }
+
+  measure: distinct_days  {
+    type: count_distinct
+    sql: concat(${fiscal_year},concat(${fiscal_month},${fiscal_day}) ;;
+  }
 }
