@@ -36,7 +36,3 @@ explore: consumer_sales {
   }
   group_label: "Consumer"
 }
-
-explore: date {
-  group_label: "Test"
-}
