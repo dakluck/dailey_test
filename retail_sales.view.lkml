@@ -311,7 +311,6 @@ view: retail_sales {
     hidden: yes
   }
 
-  #custom dimensions below here
   dimension: uniqueid {
     type: string
     sql: ${TABLE}."UNIQUEID" ;;
@@ -319,30 +318,60 @@ view: retail_sales {
     hidden: yes
   }
 
-  measure: net_sales {
-    type: sum
+  dimension: net_sales_column {
+    type: string
     sql: case when ${discpric} is null then ${price} else ${discpric} end - ${incltax} ;;
-    filters: {
-      field: modcode
-      value: "not 1"
-    }
-    drill_fields: []
-    value_format_name: measure_format_currency
+    hidden: yes
   }
 
-  measure: net_sales_compare {
+  #custom dimensions below here
+
+  measure: net_sales {
     type: sum
-    sql: case when ${discpric} is null then ${price} else ${discpric} end - ${incltax} ;;
+    sql: ${net_sales_column};;
     filters: {
       field: modcode
       value: "not 1"
     }
-    filters: {
-      field: date.relative_date_clean_relative
-      value: "Year"
-    }
     drill_fields: []
     value_format_name: measure_format_currency
+    group_label: "Net Sales"
+  }
+
+ measure: net_sales_ty {
+   type: sum
+    sql: ${net_sales_column};;
+    filters: {
+      field: date.relative_date_clean_absolute
+      value: "TY - Year"
+      }
+    group_label: "Net Sales"
+  }
+
+  measure: net_sales_ly {
+    type: sum
+    sql: ${net_sales_column};;
+    filters: {
+      field: date.relative_date_clean_absolute
+      value: "LY - Year"
+    }
+    filters: {
+      field: date.to_date
+      value: "1"
+    }
+    group_label: "Net Sales"
+  }
+
+  measure: net_sales_var {
+    type: number
+    sql: ${net_sales} - ${net_sales_ly};;
+    group_label: "Net Sales"
+  }
+
+  measure: net_sales_growth {
+    type: number
+    sql: ${net_sales_var}/${net_sales_ly} ;;
+    group_label: "Net Sales"
   }
 
   measure: units_sold {
