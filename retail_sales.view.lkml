@@ -330,6 +330,21 @@ view: retail_sales {
     value_format_name: measure_format_currency
   }
 
+  measure: net_sales_compare {
+    type: sum
+    sql: case when ${discpric} is null then ${price} else ${discpric} end - ${incltax} ;;
+    filters: {
+      field: modcode
+      value: "not 1"
+    }
+    filters: {
+      field: date.relative_date_clean_relative
+      value: "Year"
+    }
+    drill_fields: []
+    value_format_name: measure_format_currency
+  }
+
   measure: units_sold {
     type: sum
     sql: ${quantityunit} ;;
