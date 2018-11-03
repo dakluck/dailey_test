@@ -85,7 +85,7 @@ view: date {
         sql: ${relative_date} like '%Day%' ;;
         label: "YESTERDAY"
       }
-      else: "NULL"
+      else: ""
     }
   }
 

@@ -328,7 +328,7 @@ view: retail_sales {
     hidden: yes
   }
 
-  #need to figure out this logic
+  #used to create faster joins
   dimension: date_sk {
     type: number
     sql: concat(${dateofbusiness_year},concat(lpad(${dateofbusiness_month_num},2,0),lpad(${dateofbusiness_day_of_month},2,0)));;
