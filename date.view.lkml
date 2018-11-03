@@ -23,13 +23,7 @@ view: date {
 
   dimension: day_name {
     type: string
-    sql: ${TABLE}."DAY_NAME" ;;
-    order_by_field: day_of_year
-  }
-
-  dimension: day_of_year {
-    type: number
-    sql: rownumber() over (partition by ${fiscal_year}) ;;
+    sql: lpad(${TABLE}."DAY_NAME",6,0) ;;
   }
 
   dimension: fiscal_day {
