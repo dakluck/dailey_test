@@ -3,7 +3,7 @@ view: date {
 
   parameter: relative_date_filter {
     suggestions: ["YTD","QTD","MTD","WTD","DAY"]
-    type: unquoted
+    type: string
     allowed_value: {
       label: "YTD"
       value: "TY - Year"
