@@ -767,6 +767,7 @@ view: retail_sales {
     {% else %}
       ${net_sales}
     {% endif %};;
+    group_label: "Dynamic Measures"
   }
 
   measure: dynamic_measure_ty {
@@ -781,6 +782,7 @@ view: retail_sales {
     {% else %}
       ${net_sales_ty}
     {% endif %};;
+    group_label: "Dynamic Measures"
   }
 
   measure: dynamic_measure_ly {
@@ -795,6 +797,7 @@ view: retail_sales {
     {% else %}
       ${net_sales_ly}
     {% endif %};;
+    group_label: "Dynamic Measures"
   }
 
   measure: dynamic_measure_var {
@@ -809,6 +812,7 @@ view: retail_sales {
     {% else %}
       ${net_sales_var}
     {% endif %};;
+    group_label: "Dynamic Measures"
   }
 
   measure: dynamic_measure_growth {
@@ -823,6 +827,7 @@ view: retail_sales {
     {% else %}
       ${net_sales_growth}
     {% endif %};;
+    group_label: "Dynamic Measures"
   }
 
 }
