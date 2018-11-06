@@ -342,7 +342,7 @@ view: retail_sales {
 
   measure: net_sales {
     type: sum
-    sql: ${net_sales_column};;
+    sql: ${net_sales_column} where ${date.relative_date} like {{ date.relative_date_filter._value }};;
     filters: {
       field: modcode
       value: "not 1"

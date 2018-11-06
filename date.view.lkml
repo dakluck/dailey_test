@@ -1,6 +1,32 @@
 view: date {
   sql_table_name: PUBLIC.DIM_DATE ;;
 
+  parameter: relative_date_filter {
+    suggestions: ["YTD","QTD","MTD","WTD","DAY"]
+    type: unquoted
+    allowed_value: {
+      label: "YTD"
+      value: "TY - Year"
+    }
+    allowed_value: {
+      label: "QTD"
+      value: "TY - Quarter"
+    }
+    allowed_value: {
+      label: "MTD"
+      value: "TY - Month"
+    }
+    allowed_value: {
+      label: "WTD"
+      value: "TY - Week"
+    }
+    allowed_value: {
+      label: "DAY"
+      value: "TY - Day"
+    }
+    default_value: ""
+  }
+
   dimension_group: calendar {
     type: time
     timeframes: [
