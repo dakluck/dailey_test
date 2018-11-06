@@ -739,7 +739,7 @@ view: retail_sales {
 
 
   parameter: dynamic_measure_filter {
-    suggestions: ["Net Sales","Units Sold"]
+    suggestions: ["Net Sales","Units Sold","Avg Ticket"]
     type: unquoted
     allowed_value: {
       label: "Net Sales"
@@ -748,6 +748,10 @@ view: retail_sales {
     allowed_value: {
       label: "Units Sold"
       value: "units_sold"
+    }
+    allowed_value: {
+      label: "Avg Ticket"
+      value: "avg_ticket"
     }
   }
 
@@ -758,6 +762,8 @@ view: retail_sales {
       ${net_sales}
       {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
       ${units_sold}
+       {% elsif dynamic_measure_filter._parameter_value == 'Avg Ticket' %}
+      ${avg_ticket}
     {% else %}
       ${net_sales}
     {% endif %};;
@@ -770,6 +776,8 @@ view: retail_sales {
       ${net_sales_ty}
       {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
       ${units_sold_ty}
+       {% elsif dynamic_measure_filter._parameter_value == 'Avg Ticket' %}
+      ${avg_ticket}
     {% else %}
       ${net_sales_ty}
     {% endif %};;
@@ -782,6 +790,8 @@ view: retail_sales {
       ${net_sales_ly}
       {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
       ${units_sold_ly}
+       {% elsif dynamic_measure_filter._parameter_value == 'Avg Ticket' %}
+      ${avg_ticket}
     {% else %}
       ${net_sales_ly}
     {% endif %};;
@@ -794,6 +804,8 @@ view: retail_sales {
       ${net_sales_var}
       {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
       ${units_sold_var}
+       {% elsif dynamic_measure_filter._parameter_value == 'Avg Ticket' %}
+      ${avg_ticket}
     {% else %}
       ${net_sales_var}
     {% endif %};;
@@ -806,6 +818,8 @@ view: retail_sales {
       ${net_sales_growth}
       {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
       ${units_sold_growth}
+       {% elsif dynamic_measure_filter._parameter_value == 'Avg Ticket' %}
+      ${avg_ticket}
     {% else %}
       ${net_sales_growth}
     {% endif %};;

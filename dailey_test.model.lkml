@@ -36,3 +36,12 @@ explore: consumer_sales {
   }
   group_label: "Consumer"
 }
+
+explore: retail_sales_pdt {
+  join: date {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${retail_sales_pdt.date_sk} = ${date.date_sk} ;;
+  }
+  group_label: "Retail"
+}
