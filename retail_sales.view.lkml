@@ -738,4 +738,29 @@ view: retail_sales {
   }
 
 
+  parameter: dynamic_measure_filter {
+    suggestions: ["Net Sales","Units Sold"]
+    type: unquoted
+    allowed_value: {
+      label: "Net Sales"
+      value: "net_sales"
+    }
+    allowed_value: {
+      label: "Units Sold"
+      value: "units_sold"
+    }
+  }
+
+  measure: dynamic_measure {
+    type: number
+    label_from_parameter: dynamic_measure_filter
+    sql: {% if dynamic_measure_filter._parameter_value == 'Net Sales' %}
+      ${net_sales}
+      {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
+      ${units_sold}
+    {% else %}
+      ${net_sales}
+    {% endif %};;
+  }
+
 }
