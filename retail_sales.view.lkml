@@ -758,11 +758,11 @@ view: retail_sales {
   measure: dynamic_measure {
     type: number
     label_from_parameter: dynamic_measure_filter
-    sql: {% if dynamic_measure_filter._parameter_value == 'Net Sales' %}
+    sql: {% if dynamic_measure_filter._parameter_value == 'net_sales' %}
       ${net_sales}
-      {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
+      {% elsif dynamic_measure_filter._parameter_value == 'units_sold' %}
       ${units_sold}
-       {% elsif dynamic_measure_filter._parameter_value == 'Avg Ticket' %}
+       {% elsif dynamic_measure_filter._parameter_value == 'avg_ticket' %}
       ${avg_ticket}
     {% else %}
       ${net_sales}
@@ -772,11 +772,11 @@ view: retail_sales {
   measure: dynamic_measure_ty {
     type: number
     label_from_parameter: dynamic_measure_filter
-    sql: {% if dynamic_measure_filter._parameter_value == 'Net Sales' %}
+    sql: {% if dynamic_measure_filter._parameter_value == 'net_sales' %}
       ${net_sales_ty}
-      {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
+      {% elsif dynamic_measure_filter._parameter_value == 'units_sold' %}
       ${units_sold_ty}
-       {% elsif dynamic_measure_filter._parameter_value == 'Avg Ticket' %}
+       {% elsif dynamic_measure_filter._parameter_value == 'avg_ticket' %}
       ${avg_ticket}
     {% else %}
       ${net_sales_ty}
@@ -786,11 +786,11 @@ view: retail_sales {
   measure: dynamic_measure_ly {
     type: number
     label_from_parameter: dynamic_measure_filter
-    sql: {% if dynamic_measure_filter._parameter_value == 'Net Sales' %}
+    sql: {% if dynamic_measure_filter._parameter_value == 'net_sales' %}
       ${net_sales_ly}
-      {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
+      {% elsif dynamic_measure_filter._parameter_value == 'units_sold' %}
       ${units_sold_ly}
-       {% elsif dynamic_measure_filter._parameter_value == 'Avg Ticket' %}
+       {% elsif dynamic_measure_filter._parameter_value == 'avg_ticket' %}
       ${avg_ticket}
     {% else %}
       ${net_sales_ly}
@@ -800,11 +800,11 @@ view: retail_sales {
   measure: dynamic_measure_var {
     type: number
     label_from_parameter: dynamic_measure_filter
-    sql: {% if dynamic_measure_filter._parameter_value == 'Net Sales' %}
+    sql: {% if dynamic_measure_filter._parameter_value == 'net_sales' %}
       ${net_sales_var}
-      {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
+      {% elsif dynamic_measure_filter._parameter_value == 'units_sold' %}
       ${units_sold_var}
-       {% elsif dynamic_measure_filter._parameter_value == 'Avg Ticket' %}
+       {% elsif dynamic_measure_filter._parameter_value == 'avg_ticket' %}
       ${avg_ticket}
     {% else %}
       ${net_sales_var}
@@ -816,9 +816,9 @@ view: retail_sales {
     label_from_parameter: dynamic_measure_filter
     sql: {% if dynamic_measure_filter._parameter_value == 'Net Sales' %}
       ${net_sales_growth}
-      {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
+      {% elsif dynamic_measure_filter._parameter_value == 'units_sold' %}
       ${units_sold_growth}
-       {% elsif dynamic_measure_filter._parameter_value == 'Avg Ticket' %}
+       {% elsif dynamic_measure_filter._parameter_value == 'avg_ticket' %}
       ${avg_ticket}
     {% else %}
       ${net_sales_growth}
