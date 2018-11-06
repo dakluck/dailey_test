@@ -340,17 +340,34 @@ view: retail_sales {
     hidden: yes
   }
 
+  measure: inclusive_tax {
+    type: sum
+    sql: ${incltax};;
+    # filters: {
+    #   field: date.relative_date_filter
+    #   value: "{% parameter date.relative_date_filter %}"
+    # }
+    drill_fields: []
+    value_format_name: measure_format_currency
+    group_label: "Net Sales"
+    description: "tax collected as part of the price of the item that we must remit to the state of sale"
+  }
+
   measure: net_sales {
     type: sum
-    sql: ${net_sales_column} where ${date.relative_date} like {% parameter date.relative_date_filter %};;
+    sql: ${net_sales_column};;
     filters: {
       field: modcode
       value: "not 1"
     }
+    # filters: {
+    #   field: date.relative_date_filter
+    #   value: "{% parameter date.relative_date_filter %}"
+    # }
     drill_fields: []
     value_format_name: measure_format_currency
     group_label: "Net Sales"
-    description: "sales amount less any discounts applied, less inclusive tax"
+    description: "sales less any promotion applied, less inclusive tax"
   }
 
  measure: net_sales_ty {
