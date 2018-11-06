@@ -763,4 +763,52 @@ view: retail_sales {
     {% endif %};;
   }
 
+  measure: dynamic_measure_ty {
+    type: number
+    label_from_parameter: dynamic_measure_filter
+    sql: {% if dynamic_measure_filter._parameter_value == 'Net Sales' %}
+      ${net_sales_ty}
+      {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
+      ${units_sold_ty}
+    {% else %}
+      ${net_sales_ty}
+    {% endif %};;
+  }
+
+  measure: dynamic_measure_ly {
+    type: number
+    label_from_parameter: dynamic_measure_filter
+    sql: {% if dynamic_measure_filter._parameter_value == 'Net Sales' %}
+      ${net_sales_ly}
+      {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
+      ${units_sold_ly}
+    {% else %}
+      ${net_sales_ly}
+    {% endif %};;
+  }
+
+  measure: dynamic_measure_var {
+    type: number
+    label_from_parameter: dynamic_measure_filter
+    sql: {% if dynamic_measure_filter._parameter_value == 'Net Sales' %}
+      ${net_sales_var}
+      {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
+      ${units_sold_var}
+    {% else %}
+      ${net_sales_var}
+    {% endif %};;
+  }
+
+  measure: dynamic_measure_growth {
+    type: number
+    label_from_parameter: dynamic_measure_filter
+    sql: {% if dynamic_measure_filter._parameter_value == 'Net Sales' %}
+      ${net_sales_growth}
+      {% elsif dynamic_measure_filter._parameter_value == 'Units Sold' %}
+      ${units_sold_growth}
+    {% else %}
+      ${net_sales_growth}
+    {% endif %};;
+  }
+
 }
