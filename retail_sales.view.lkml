@@ -667,6 +667,7 @@ view: retail_sales {
   measure: store_days {
     type: count_distinct
     sql: concat(${fkstoreid},${date_sk});;
+    group_label: "Store Days"
   }
 
   measure: store_days_ty {
@@ -676,6 +677,7 @@ view: retail_sales {
       field: date.relative_date
       value: "%TY - Year%"
     }
+    group_label: "Store Days"
   }
 
   measure: store_days_ly {
@@ -689,12 +691,28 @@ view: retail_sales {
       field: date.to_date
       value: "To Date"
     }
+    group_label: "Store Days"
     }
 
   measure: store_days_var {
     type: number
     sql: ${store_days_ty}-${store_days_ly};;
+    group_label: "Store Days"
   }
+
+  measure: store_days_growth {
+    type: number
+    sql: ${store_days_var}/nullif(${store_days_ly},0) ;;
+    value_format_name: percent_1
+    group_label: "Store Days"
+    html:
+    {% if value >= 0 %}
+    <font color="green">{{ rendered_value }}</font>
+    {% else %}
+    <font color="red">{{ rendered_value }}</font>
+    {% endif %} ;;
+  }
+
 
   measure: units_per_store_per_day {
     type: number
