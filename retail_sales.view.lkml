@@ -422,6 +422,7 @@ view: retail_sales {
     {% else %}
     <font color="red">{{ rendered_value }}</font>
     {% endif %} ;;
+    drill_fields: [date.fiscal_year_week,net_sales_growth]
   }
 
   measure: units_sold {
