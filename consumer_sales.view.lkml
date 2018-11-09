@@ -320,7 +320,7 @@ view: consumer_sales {
 
   set: store_details_drill {
     fields: [
-      date.fiscal_year_day,
+      date.calendar_date,
       chainnumber,
       category,
       brand,
