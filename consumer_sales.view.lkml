@@ -119,8 +119,45 @@ view: consumer_sales {
       value: "Buyback,Sales"
     }
     value_format: "[>=1000000000]$0.0,,,\" B\";[>=1000000]$0.0,,\" M\";[>=1000]$0.0,,\" K\";0"
-    drill_fields: []
     group_label: "Gross Sales Less Buybacks"
+    drill_fields: [sales_measure_drill*]
+    link: {
+      label: "Visualize Units Per Store Per Week"
+      url: "{% assign vis_config = '{
+           \"type\" : \"looker_column\",
+           \"limit\" : 500,
+           \"column_limit\" : 50,
+           \"stacking\" : \"\",
+           \"show_value_labels\" : false,
+           \"label_density\" : 25,
+           \"legend_position\" : \"center\",
+           \"x_axis_gridlines\" : false,
+           \"y_axis_gridlines\" : true,
+           \"show_view_names\" : false,
+           \"point_style\" : \"none\",
+           \"series_types\" : {},
+           \"limit_displayed_rows\": false,
+           \"y_axis_combined\" : true,
+           \"show_y_axis_labels\" : true,
+           \"show_y_axis_ticks\" : true,
+           \"y_axis_tick_density\" : \"default\",
+           \"y_axis_tick_density_custom\" : 5,
+           \"show_x_axis_label\" : false,
+           \"show_x_axis_ticks\" : true,
+           \"x_axis_scale\" : \"auto\",
+           \"y_axis_scale_mode\" : \"linear\",
+           \"x_axis_reversed\" : false,
+           \"y_axis_reversed\" : false,
+           \"plot_size_by_field\" : false,
+           \"ordering\" : \"none\",
+           \"show_null_labels\" : false,
+           \"show_dropoff\" : false,
+           \"show_totals_labels\" : false,
+           \"show_silhouette\" : false,
+           \"totals_color\" : \"#808080\"
+          }' %}
+        {{ link }}&vis_config={{ vis_config | encode_uri }}&toggle=dat,pik,vis&limit=5000&sorts=date.fiscal_year_week%20desc"
+      }
   }
 
   measure: gross_sales_less_buybacks_ty {
@@ -265,7 +302,7 @@ view: consumer_sales {
   measure: units_per_store_per_week {
     type: number
     sql: ${gross_units_less_buybacks}/${distinct_accounts}/${date.distinct_weeks};;
-    drill_fields: []
+    drill_fields: [store_details_drill*]
   }
 
   measure: units_per_store_per_sku_per_week {
@@ -273,4 +310,24 @@ view: consumer_sales {
     sql: ${gross_units_less_buybacks}/${distinct_accounts}/${distinct_items}/${date.distinct_weeks};;
     drill_fields: []
   }
+
+  set: sales_measure_drill {
+    fields: [
+      date.fiscal_year_week,
+      units_per_store_per_week
+    ]
+  }
+
+  set: store_details_drill {
+    fields: [
+      date.fiscal_year_day,
+      chainnumber,
+      category,
+      brand,
+      item,
+      qty,
+      amount
+    ]
+  }
+
 }
